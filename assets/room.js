@@ -80,14 +80,27 @@
     const codeEl = panel.querySelector(".room-code");
     const btn = panel.querySelector("[data-unlock-btn]");
     const continueWrap = panel.querySelector(".continue-wrap");
+    const celebrate = panel.querySelector("[data-celebrate]");
 
-    if (sessionStorage.getItem(unlockedKey(room)) === "1") {
+    function showCelebrate(on) {
+      if (!celebrate) return;
+      if (on) celebrate.removeAttribute("hidden");
+      else celebrate.setAttribute("hidden", "");
+    }
+
+    function applySuccess() {
+      panel.classList.remove("fail");
       panel.classList.add("success");
       if (msg) { msg.textContent = OK_MSG; msg.className = "msg ok"; }
       if (codeEl) codeEl.textContent = roomCode;
       if (continueWrap && nextHref) {
         continueWrap.innerHTML = `<a class="btn success" href="${nextHref}">Continue</a>`;
       }
+      showCelebrate(true);
+    }
+
+    if (sessionStorage.getItem(unlockedKey(room)) === "1") {
+      applySuccess();
     }
 
     btn?.addEventListener("click", async () => {
@@ -95,6 +108,7 @@
       if (ids.some((id) => !sessionStorage.getItem(storageKey(room, id)))) {
         panel.classList.remove("success");
         panel.classList.add("fail");
+        showCelebrate(false);
         if (msg) { msg.textContent = "Answer every challenge first."; msg.className = "msg bad"; }
         setTimeout(() => panel.classList.remove("fail"), 450);
         return;
@@ -102,17 +116,12 @@
       const digest = await sha256Hex(trail);
       if (digest === expected) {
         sessionStorage.setItem(unlockedKey(room), "1");
-        panel.classList.remove("fail");
-        panel.classList.add("success");
-        if (msg) { msg.textContent = OK_MSG; msg.className = "msg ok"; }
-        if (codeEl) codeEl.textContent = roomCode;
-        if (continueWrap && nextHref) {
-          continueWrap.innerHTML = `<a class="btn success" href="${nextHref}">Continue</a>`;
-        }
+        applySuccess();
         burstConfetti();
       } else {
         panel.classList.remove("success");
         panel.classList.add("fail");
+        showCelebrate(false);
         if (msg) { msg.textContent = FAIL_MSG; msg.className = "msg bad"; }
         setTimeout(() => panel.classList.remove("fail"), 450);
       }
