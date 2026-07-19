@@ -92,7 +92,7 @@
 
     btn?.addEventListener("click", async () => {
       const trail = ids.map((id) => sessionStorage.getItem(storageKey(room, id)) || "").join("");
-      if (trail.length !== ids.length || trail.includes("")) {
+      if (ids.some((id) => !sessionStorage.getItem(storageKey(room, id)))) {
         panel.classList.remove("success");
         panel.classList.add("fail");
         if (msg) { msg.textContent = "Answer every challenge first."; msg.className = "msg bad"; }
