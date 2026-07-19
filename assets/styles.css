@@ -69,13 +69,13 @@ a { color: var(--primary); }
   margin-bottom: 1rem;
 }
 .room-banner h2 { margin: 0.2rem 0; }
-.room-scene, .celebrate-scene {
+.room-scene, .celebrate-scene, .final-scene {
   margin: 0 0 1rem;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(26, 26, 46, 0.1);
 }
-.room-scene img, .celebrate-scene img {
+.room-scene img, .celebrate-scene img, .final-scene img {
   display: block;
   width: 100%;
   max-height: 260px;
@@ -87,12 +87,15 @@ a { color: var(--primary); }
   margin-right: auto;
 }
 .celebrate-scene img { max-height: 220px; }
+.final-scene img { max-height: 280px; }
 .celebrate-scene[hidden] { display: none !important; }
-.lock-panel.success .celebrate-scene:not([hidden]) {
+.lock-panel.success .celebrate-scene:not([hidden]),
+.final-beat.success .final-scene {
   animation: enter 0.35s ease-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .lock-panel.success .celebrate-scene:not([hidden]) { animation: none; }
+  .lock-panel.success .celebrate-scene:not([hidden]),
+  .final-beat.success .final-scene { animation: none; }
 }
 .progress {
   display: flex;
