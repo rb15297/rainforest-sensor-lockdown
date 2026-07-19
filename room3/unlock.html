@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unlock Room 3</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+
+<main class="wrap">
+  
+<div class="room-banner" style="background:#D97706">
+  <div class="badge">Room 3</div>
+  <h2>👁️ Sensor Array</h2>
+  <p class="muted" style="color:rgba(255,255,255,0.85);margin:0.35rem 0 0">4-LS1-2 Information Intake</p>
+  <div class="progress" data-progress data-room="3"
+       data-challenge-ids='["3A", "3B", "3C", "3D"]' data-current=""><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+</div>
+
+  <div class="card lock-panel" data-unlock
+       data-room="3"
+       data-unlock-hash="277bcb0cd118a1dc043a86068e861704c151d457c0fe343cf91b8eba338dd270"
+       data-challenge-ids='["3A", "3B", "3C", "3D"]'
+       data-room-code="9528"
+       data-next-href="../room4/index.html">
+    <div class="lock-icon" aria-hidden="true">🔒</div>
+    <h2>Room 3 unlock</h2>
+    <p>You finished every challenge in this room. Tap Unlock to check your answers. Success reveals the room code and opens the next room.</p>
+    <p class="msg" aria-live="polite"></p>
+    <div class="room-code" aria-label="Room code"></div>
+    <button type="button" class="btn accent" data-unlock-btn>Unlock</button>
+    <div class="continue-wrap"></div>
+  </div>
+  <div class="nav"><a class="btn" href="challenge-3D.html">Back</a><span></span></div>
+</main>
+
+<script src="../assets/room.js"></script>
+</body>
+</html>
