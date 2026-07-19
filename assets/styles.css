@@ -22,6 +22,7 @@ body {
   background: linear-gradient(160deg, var(--bg-light), #e8eef3 50%, var(--primary-light));
   color: var(--text-dark);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 a { color: var(--primary); }
 .wrap {
@@ -74,20 +75,34 @@ a { color: var(--primary); }
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(26, 26, 46, 0.1);
+  max-width: 100%;
+  width: 100%;
 }
 .room-scene img, .celebrate-scene img, .final-scene img {
   display: block;
   width: 100%;
-  max-height: 260px;
+  max-width: 100%;
+  height: auto;
+  max-height: 220px;
   object-fit: cover;
+  object-position: center;
 }
 .celebrate-scene {
-  max-width: 420px;
+  max-width: 360px;
   margin-left: auto;
   margin-right: auto;
 }
-.celebrate-scene img { max-height: 220px; }
-.final-scene img { max-height: 280px; }
+.celebrate-scene img { max-height: 200px; }
+.final-scene {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.final-scene img { max-height: 200px; }
+[data-final-win] {
+  text-align: center;
+  overflow: hidden;
+}
 .celebrate-scene[hidden] { display: none !important; }
 .lock-panel.success .celebrate-scene:not([hidden]),
 .final-beat.success .final-scene {
