@@ -1,3 +1,3 @@
-# Rainforest Sensor Lockdown (student site)
+# Rainforest Sensor Lockdown — student site
 
-Student site only.
+Self-paced classroom student site. Teacher guides not included.
